@@ -24,6 +24,13 @@ app.post('/toggle-outage', (req, res) => {
   res.json({ message: `Outage state set to ${isOutage}, ${pollingInterval}, ${Max}` });
 });
 
+app.post('/update-outage', (req, res) => {
+  console.log(req.body);
+  pollingInterval = req.body?.pollingInterval;
+  Max = req.body?.Max;
+  res.json({ message: `Outage state set to ${isOutage}, ${pollingInterval}, ${Max}` });
+});
+
 // Start the server
 app.listen(port, () => {
   console.log(`Server running at http://localhost:${port}`);
